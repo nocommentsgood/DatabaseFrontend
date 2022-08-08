@@ -1,19 +1,14 @@
 <h2>Student Database</h2>
-<div><span>id: </span>{{student.id}}</div>
-<div><span>First Name: </span>{{student.firstName | uppercase}}</div>
-<div><span>Last Name: </span>{{student.lastName | uppercase}}</div>
-<div><span>Student Year: </span>{{student.studentYear}}</div>
-<div><span>Student Balance: </span>{{student.balance}}</div>
 
 <div>
-    <label for="firstname">Student first name:</label>
-    <input id="firstname" [(ngModel)]="student.firstName" placeholder="name">
-    <label for="lastname">Student last name:</label>
-    <input id="lastname" [(ngModel)]="student.lastName" placeholder="name">
+    <label for="new-student">Student name: </label>
+    <input id="new-student" #studentName />
 
-    <label for="studentyear">Student year: </label>
-    <input id="studentyear" [(ngModel)]="student.studentYear" placeholder="studentyear">
+    <!-- (click) passes input value to add() and then clears the input -->
+    <button type="button" class="add-button" (click)="add(studentName.value);
+    studentName.value='' "> Add Student</button>
 </div>
+
 
 <div>
     <ul class="students">
@@ -21,6 +16,8 @@
             <a routerLink="/detail/{{student.id}}">
                 <span class="badge">{{student.id}}</span> {{student.firstName}}
             </a>
+            <button type="button" class="delete" title="delete student"
+                (click)="delete(student)">x</button>
         </li>
     </ul>
 </div>

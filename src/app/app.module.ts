@@ -8,6 +8,8 @@ import { FormsModule } from '@angular/forms';
 import { StudentDetailComponent } from './student-detail/student-detail.component';
 import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
+import { StudentSearchComponent } from './student-search/student-search.component';
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     StudentsComponent,
     StudentDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    StudentSearchComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
