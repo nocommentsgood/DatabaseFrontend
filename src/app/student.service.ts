@@ -20,4 +20,11 @@ export class StudentService {
     this.messageService.add('StudentService: fetched students');
     return students;
   }
+
+  // this can be rewritten to make http request without changing StudentDetailComponent
+  getStudent(id: number): Observable<Student> {
+    const student = STUDENTS.find(h => h.id === id)!;
+    this.messageService.add(`StudentService: fetched student id=${id}`);
+    return of(student);
+  }
 }
