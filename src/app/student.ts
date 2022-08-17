@@ -5,7 +5,7 @@ export interface Student {
     firstName: string;
     lastName: string;
     studentYear: number;
-    studentCourses: Array<Courses>;
+    //studentCourses: Array<Courses>;
     balance: number;
 
     

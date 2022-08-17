@@ -8,6 +8,7 @@ import { catchError, map, tap } from 'rxjs';
 import { trimTrailingNulls } from '@angular/compiler/src/render3/view/util';
 
 
+
 // TODO: in the future, this will get data from the database,
 // instead of fake data from here
 @Injectable({
@@ -17,29 +18,32 @@ import { trimTrailingNulls } from '@angular/compiler/src/render3/view/util';
 export class StudentService {
 
   // the web api expects special header in http save requests. this might be different in spring boot api
-  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' })};
+  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})};
 
   // this will be changed to work with database
-  private studentsURL = 'api/students'; // this is URL to web api
+  private studentsURL = 'http://localhost:8080/api/students'; // this is URL to web api
+  private addStudentURL = 'http://localhost:8080/api/student';
+  private getStudentURL = 'http://localhost:8080/api/id';
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
   // log a StudentService message with the MessageService
   private log(message: string) {
-    this.messageService.add(`StudentService: ${message}`)
+    this.messageService.add(`StudentService: ${message}`);
   }
 
   /* http.get returns an untyped JSON object. Some APIs bury the data is an object.
    The data will have to be 'dug out' using RxJS map() operator. */
   getStudents(): Observable<Student[]> {
-    return this.http.get<Student[]>(this.studentsURL).pipe(
+    return this.http.get<Student[]>(this.studentsURL)
+    .pipe(
       tap(_ => this.log('fetched students')),
       catchError(this.handleError<Student[]>('getStudents', [])));
   }
 
   // this can be rewritten to make http request without changing StudentDetailComponent
   getStudent(id: number): Observable<Student> {
-    const url = `${this.studentsURL}/${id}`;
+    const url = `${this.getStudentURL}/${id}`;
     return this.http.get<Student>(url).pipe(
       tap(_ => this.log(`fetched student id=${id}`)),
       catchError(this.handleError<Student>(`getStudent id=${id}`))
@@ -55,9 +59,10 @@ export class StudentService {
   }
 
   // this is the post method to add student
-  // expects server to create ad for student which is returned in Observable<Student> to caller
+  // expects server to create id for student which is returned in Observable<Student> to caller
   addStudent(student: Student): Observable<Student> {
-    return this.http.post<Student>(this.studentsURL, student, this.httpOptions).pipe(
+    return this.http.post<Student>(this.addStudentURL, student)
+    .pipe(
       tap((newStudent: Student) => this.log(`added student w/ id=${newStudent.id}`)),
       catchError(this.handleError<Student>('addStudent'))
     );

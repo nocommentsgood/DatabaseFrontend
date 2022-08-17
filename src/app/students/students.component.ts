@@ -16,7 +16,7 @@ export class StudentsComponent implements OnInit {
     firstName: 'TestStudent',
     lastName: 'StudentTest',
     studentYear: 0,
-    studentCourses: [],
+    //studentCourses: [],
     balance: 0
   };
 
@@ -36,10 +36,11 @@ export class StudentsComponent implements OnInit {
     this.studentService.getStudents().subscribe(students => this.students = students);
   }
 
-  add(firstName: string): void {
+  add(firstName: string, lastName: string, studentYear: number, balance: number): void {
     firstName = firstName.trim();
+    lastName = lastName.trim();
     if (!firstName) { return; }
-    this.studentService.addStudent({ firstName } as Student)
+    this.studentService.addStudent({ firstName, lastName, studentYear, balance } as Student)
     .subscribe(student => {
       this.students.push(student);
     })
