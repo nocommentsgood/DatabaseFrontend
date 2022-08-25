@@ -13,14 +13,14 @@
     <!-- (click) passes input value to add() and then clears the input -->
     <button type="button" class="add-button" (click)="add(firstName.value , lastName.value, studentYear.valueAsNumber, balance.valueAsNumber);
      "> Add Student</button>
-</div>
+
 
 
 <div>
     <ul class="students">
         <li *ngFor="let student of students">
-            <a routerLink="/detail/{{student.lastName}}">
-                <span class="badge">{{student.lastName}}</span> {{student.firstName}}
+            <a routerLink="/detail/{{student.studentID}}">
+                <span class="badge">{{student.studentID}}</span> {{student.firstName}}
             </a>
             <button type="button" class="delete" title="delete student"
                 (click)="delete(student)">x</button>

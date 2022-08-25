@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Student } from './student';
-import { STUDENTS } from './mock-students';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs';
 import { trimTrailingNulls } from '@angular/compiler/src/render3/view/util';
 
@@ -18,7 +17,7 @@ import { trimTrailingNulls } from '@angular/compiler/src/render3/view/util';
 export class StudentService {
 
   // the web api expects special header in http save requests. this might be different in spring boot api
-  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json'})};
+  httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Accept': 'application/json'})};
 
   // this will be changed to work with database
   private studentsURL = 'http://localhost:8080/api/students'; // this is URL to web api
@@ -53,17 +52,19 @@ export class StudentService {
   // http.put takes 3 parameters. URL, data to update, options
   updateStudent(student: Student): Observable<any> {
     return this.http.put(this.studentsURL, student, this.httpOptions).pipe(
-      tap(_ => this.log(`updated student id=${student.id}`)),
+      tap(_ => this.log(`updated student id=${student.studentID}`)),
       catchError(this.handleError<any>('updateStudent'))
     );
   }
 
   // this is the post method to add student
-  // expects server to create id for student which is returned in Observable<Student> to caller
+  // expects server or database to create id for student which is returned in Observable<Student> to caller
   addStudent(student: Student): Observable<Student> {
-    return this.http.post<Student>(this.addStudentURL, student)
+    const params = new HttpParams().append('firstName', 'TestingThisOut');
+    console.log(student);
+    return this.http.post<Student>(this.addStudentURL, student, {params: params})
     .pipe(
-      tap((newStudent: Student) => this.log(`added student w/ id=${newStudent.id}`)),
+      tap((newStudent: Student) => this.log(`added student w/ id=${newStudent.studentID}`)),
       catchError(this.handleError<Student>('addStudent'))
     );
   }

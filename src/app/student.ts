@@ -1,7 +1,7 @@
 import { Courses } from "./Courses";
 
 export interface Student {
-    id: number;
+    studentID: number;
     firstName: string;
     lastName: string;
     studentYear: number;

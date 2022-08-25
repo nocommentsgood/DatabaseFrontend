@@ -5,7 +5,7 @@
     <ul class="search-result">
         <!-- the students$ indicates it is an Observable -->
         <li *ngFor="let student of students$ | async">
-            <a routerLink="/detail/{{student.id}}"> {{student.firstName}}</a>
+            <a routerLink="/detail/{{student.studentID}}"> {{student.firstName}}</a>
         </li>
     </ul>
 </div>  

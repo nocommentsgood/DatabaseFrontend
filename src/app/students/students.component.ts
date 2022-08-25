@@ -11,22 +11,13 @@ export class StudentsComponent implements OnInit {
 
   students: Student[] = [];
 
-  student: Student = {
-    id: 0, 
-    firstName: 'TestStudent',
-    lastName: 'StudentTest',
-    studentYear: 0,
-    //studentCourses: [],
-    balance: 0
-  };
+
 
   constructor(private studentService: StudentService) { }
 
   
   
-  onSelect(student: Student): void {
-    
-  }
+
 
   ngOnInit(): void {
     this.getStudents();
@@ -37,8 +28,8 @@ export class StudentsComponent implements OnInit {
   }
 
   add(firstName: string, lastName: string, studentYear: number, balance: number): void {
-    firstName = firstName.trim();
-    lastName = lastName.trim();
+    firstName.trim();
+    lastName.trim();
     if (!firstName) { return; }
     this.studentService.addStudent({ firstName, lastName, studentYear, balance } as Student)
     .subscribe(student => {
@@ -48,7 +39,7 @@ export class StudentsComponent implements OnInit {
 
   delete(student: Student): void {
     this.students = this.students.filter(h => h !== student);
-    this.studentService.deleteStudent(student.id).subscribe();
+    this.studentService.deleteStudent(student.studentID).subscribe();
   }
 
 }
