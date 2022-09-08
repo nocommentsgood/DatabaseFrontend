@@ -24,6 +24,7 @@ export class StudentService {
   private addStudentURL = 'http://localhost:8080/api/student';
   private getStudentURL = 'http://localhost:8080/api/id';
   private deleteURL = 'http://localhost:8080/api/id/delete';
+  private updateStudentURL = 'http://localhost:8080/api/update'
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
@@ -43,8 +44,9 @@ export class StudentService {
 
   // this can be rewritten to make http request without changing StudentDetailComponent
   getStudent(id: number): Observable<Student> {
-    const url = `${this.getStudentURL}/${id}`;
-    return this.http.get<Student>(url).pipe(
+    //const url = `${this.getStudentURL}/${id}`;
+    const params = new HttpParams().append('studentID', id);
+    return this.http.get<Student>(this.getStudentURL, {params: params}).pipe(
       tap(_ => this.log(`fetched student id=${id}`)),
       catchError(this.handleError<Student>(`getStudent id=${id}`))
     );
@@ -52,7 +54,7 @@ export class StudentService {
 
   // http.put takes 3 parameters. URL, data to update, options
   updateStudent(student: Student): Observable<any> {
-    return this.http.put(this.studentsURL, student, this.httpOptions).pipe(
+    return this.http.put(this.updateStudentURL, student, this.httpOptions).pipe(
       tap(_ => this.log(`updated student id=${student.studentID}`)),
       catchError(this.handleError<any>('updateStudent'))
     );
