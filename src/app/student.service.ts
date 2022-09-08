@@ -23,6 +23,7 @@ export class StudentService {
   private studentsURL = 'http://localhost:8080/api/students'; // this is URL to web api
   private addStudentURL = 'http://localhost:8080/api/student';
   private getStudentURL = 'http://localhost:8080/api/id';
+  private deleteURL = 'http://localhost:8080/api/id/delete';
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
@@ -71,9 +72,11 @@ export class StudentService {
 
   // http delete 
   deleteStudent(id: number): Observable<Student> {
-    const url = `${this.studentsURL}/${id}`;
+    const url = `${this.deleteURL}${id}`;
+    console.log(url);
+    const params = new HttpParams().append('studentID', id);
 
-    return this.http.delete<Student>(url, this.httpOptions).pipe(
+    return this.http.delete<Student>(this.deleteURL, {params: params}).pipe(
       tap(_ => this.log(`deleted student id=${id}`)),
       catchError(this.handleError<Student>('deleteStudent'))
     );

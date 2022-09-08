@@ -37,6 +37,11 @@ export class StudentsComponent implements OnInit {
     })
   }
 
+  /*delete(student: Student): void {
+    this.students = this.students.filter(h => h !== student);
+    this.studentService.deleteStudent(student.studentID).subscribe();
+  }*/
+
   delete(student: Student): void {
     this.students = this.students.filter(h => h !== student);
     this.studentService.deleteStudent(student.studentID).subscribe();
