@@ -1,11 +1,11 @@
-<div id="search-component">
-    <label class="font-bold pl-5" for="search-box">Student Search</label>
-    <input class="border-2 rounded ml-2 hover:rounded-lg" #searchBox  id="search-box" (input)="search(searchBox.value)" />
+<div>
+    <label class="font-bold pl-5 text-slate-100" for="search-box">Student Search</label>
+    <input class="border-2 rounded ml-2 focus:rounded-sm" #searchBox  id="search-box" (input)="search(searchBox.value)" />
     
-    <ul class="">
+    <ul class="list-decimal pl-10 text-slate-400">
         <!-- the students$ indicates it is an Observable -->
         <li *ngFor="let student of students$ | async">
-            <a routerLink="/detail/{{student.studentID}}"> {{student.firstName}}</a>
+            <a class="text-slate-400 hover:font-bold hover:text-slate-100 hover:text-lg" routerLink="/detail/{{student.studentID}}"> {{student.firstName}}</a>
         </li>
     </ul>
 </div>  

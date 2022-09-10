@@ -1,9 +1,17 @@
-<div class="bg-black">
-<h1 class="text-3xl font-bold text-center p-2 bg-stone-400">{{title}}</h1>
+<div class="flex flex-wrap bg-gradient-to-b from-slate-900 to-slate-800">
+    <div class="w-screen">
+<h1 class="text-3xl font-bold text-center p-2 text-slate-100">{{title}}</h1>
 </div>
-<nav class="flex justify-center bg-slate-500">
-    <a routerLink="/dashboard"><button type="button" class="shadow-sm bg-blue-400 rounded-full border-2 border-black hover:bg-slate-500 p-1 m-2"> Dashboard </button></a>
-    <a routerLink="/students"><button type="button" class="shadow-sm bg-blue-400 rounded-full border-2 border-black hover:bg-slate-500 p-1 m-2"> Students </button></a>
+
+<div class="flex pl-36">
+<nav class="flex flex-col justify-start pr-16 h-screen border-l-2 border-slate-100">
+    <a routerLink="/dashboard"><button type="button" class="shadow-sm bg-blue-400 text-slate-100 rounded-full border-2 border-black hover:bg-slate-500 p-1 m-2"> Dashboard </button></a>
+    <a routerLink="/students"><button type="button" class="shadow-sm bg-blue-400 text-slate-100 rounded-full border-2 border-black hover:bg-slate-500 p-1 m-2"> Students </button></a>
 </nav>
+</div>
+<div class="flex flex-col">
 <router-outlet></router-outlet>
+
 <app-messages></app-messages>
+</div>
+</div>

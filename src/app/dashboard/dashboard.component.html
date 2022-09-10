@@ -1,6 +1,8 @@
-<h2 class="font-bold text-2xl">Top Students: </h2>
 <div>
+<h2 class="font-bold text-2xl pl-5 pb-2 text-slate-100 ">Top Students: </h2>
+<div class="flex flex-row justify-between pl-5 pb-2">
     <!-- the below routerLink is using angular interpolation binding -->
-    <a *ngFor="let student of students" routerLink="/detail/{{student.studentID}}">{{student.firstName}} </a>
+    <a class="text-slate-400 hover:text-slate-300" *ngFor="let student of students" routerLink="/detail/{{student.studentID}}">{{student.firstName}} </a>
 </div>
 <app-student-search></app-student-search>
+</div>
