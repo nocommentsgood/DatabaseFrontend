@@ -1,7 +1,9 @@
-<h1>{{title}}</h1>
-<nav>
-    <a routerLink="/dashboard">Dashboard </a>
-    <a routerLink="/students">Students </a>
+<div class="bg-black">
+<h1 class="text-3xl font-bold text-center p-2 bg-stone-400">{{title}}</h1>
+</div>
+<nav class="flex justify-center bg-slate-500">
+    <a routerLink="/dashboard"><button type="button" class="shadow-sm bg-blue-400 rounded-full border-2 border-black hover:bg-slate-500 p-1 m-2"> Dashboard </button></a>
+    <a routerLink="/students"><button type="button" class="shadow-sm bg-blue-400 rounded-full border-2 border-black hover:bg-slate-500 p-1 m-2"> Students </button></a>
 </nav>
 <router-outlet></router-outlet>
 <app-messages></app-messages>

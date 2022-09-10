@@ -1,8 +1,8 @@
 <div id="search-component">
-    <label for="search-box">Student Search</label>
-    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+    <label class="font-bold pl-5" for="search-box">Student Search</label>
+    <input class="border-2 rounded ml-2 hover:rounded-lg" #searchBox  id="search-box" (input)="search(searchBox.value)" />
     
-    <ul class="search-result">
+    <ul class="">
         <!-- the students$ indicates it is an Observable -->
         <li *ngFor="let student of students$ | async">
             <a routerLink="/detail/{{student.studentID}}"> {{student.firstName}}</a>

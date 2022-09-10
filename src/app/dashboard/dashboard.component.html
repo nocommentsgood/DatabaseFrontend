@@ -1,4 +1,4 @@
-<h2>Top Students</h2>
+<h2 class="font-bold text-2xl">Top Students: </h2>
 <div>
     <!-- the below routerLink is using angular interpolation binding -->
     <a *ngFor="let student of students" routerLink="/detail/{{student.studentID}}">{{student.firstName}} </a>
