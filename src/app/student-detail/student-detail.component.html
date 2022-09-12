@@ -1,22 +1,23 @@
-<button type="button" (click)="goBack()">Go Back</button>
+<button type="button" class="shadow-sm bg-blue-400 text-slate-100 rounded-full border-2 border-black hover:bg-slate-500 p-1 m-2" (click)="goBack()">Go Back</button>
 <div *ngIf="student">
-    <h2>{{student.firstName | uppercase}} Details</h2>
-    <div><span>id: </span>{{student.studentID}}</div>
-    <div>
-        <label for="student-firstname">Student firstname: </label>
-        <input id="student-firstname" [(ngModel)]="student.firstName" placeholder="name">
+    <h2 class="text-slate-100 text-lg">Details Of Student: {{student.firstName | uppercase}}</h2>
+    <div class="pt-2 text-slate-100"><span>ID: </span>{{student.studentID}}</div>
+    
+    <div class="pt-2">
+        <label class="text-slate-100" for="student-firstname">Student firstname: </label>
+        <input class="bg-blue-300/95 border-2 rounded ml-2 focus:rounded-sm" id="student-firstname" [(ngModel)]="student.firstName" placeholder="name">
     </div>
-    <div>
-        <label for="student-lastname">Student lastname: </label>
-        <input id="student-lastname" [(ngModel)]="student.lastName" placeholder="name">
+    <div class="pt-2">
+        <label class="text-slate-100" for="student-lastname">Student lastname: </label>
+        <input class="bg-blue-300/95 border-2 rounded ml-2 focus:rounded-sm" id="student-lastname" [(ngModel)]="student.lastName" placeholder="name">
     </div>
-    <div>
-        <label for="student-year">Student year: </label>
-        <input id="student-year" [(ngModel)]="student.studentYear" placeholder="0">
+    <div class="pt-2">
+        <label class="text-slate-100" for="student-year">Student year: </label>
+        <input class="bg-blue-300/95 border-2 rounded ml-2 focus:rounded-sm" id="student-year" [(ngModel)]="student.studentYear" placeholder="0">
     </div>
-    <div>
-        <label for="balance">Student balance: </label>
-        <input id="balance" [(ngModel)]="student.balance" placeholder="0">
+    <div class="pt-2">
+        <label class="text-slate-100" for="balance">Student balance: </label>
+        <input class="bg-blue-300/95 border-2 rounded ml-2 focus:rounded-sm" id="balance" [(ngModel)]="student.balance" placeholder="0">
     </div>
-    <button type="button" (click)="save()">Save</button>
+    <button type="button" class="shadow-sm bg-blue-400 text-slate-100 rounded-full border-2 border-black p-1 mt-2 hover:bg-yellow-500" (click)="save()">Update</button>
 </div>
