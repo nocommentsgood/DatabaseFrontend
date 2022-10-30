@@ -16,6 +16,12 @@ export class StudentSearchComponent implements OnInit {
 
   constructor(private studentService: StudentService) { }
 
+  /*
+  *
+  * Notes to self: Might end up putting the search function on the backend. 
+  * Or have another way of searching, but not for names, and put that on the backend. Just for practice. 
+  * 
+  */
   search(term: string): void {
     this.searchTerms.next(term);
   }

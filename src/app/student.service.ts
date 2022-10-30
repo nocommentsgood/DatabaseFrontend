@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Student } from './student';
+import { Courses } from './Courses';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs';
 import { trimTrailingNulls } from '@angular/compiler/src/render3/view/util';
+import { CourseNames } from './CourseNames';
 
 
 
@@ -25,6 +27,7 @@ export class StudentService {
   private getStudentURL = 'http://localhost:8080/api/id';
   private deleteURL = 'http://localhost:8080/api/id/delete';
   private updateStudentURL = 'http://localhost:8080/api/update'
+  private coursesURL = 'http://localhost:8080/api/courses'
 
   constructor(private http: HttpClient, private messageService: MessageService) { }
 
@@ -95,6 +98,13 @@ export class StudentService {
         this.log(`no students matching "${term}"`)),
         catchError(this.handleError<Student[]>('searchStudents', []))
     );
+  }
+
+  getCourses(): Observable<CourseNames[]> {
+    return this.http.get<CourseNames[]>(this.coursesURL)
+    .pipe(
+      tap(_ => this.log('fetched course names')),
+      catchError(this.handleError<CourseNames[]>('getCourses', [])));
   }
 
   /**

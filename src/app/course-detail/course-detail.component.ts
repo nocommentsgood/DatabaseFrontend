@@ -1,21 +1,20 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Student } from '../student';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { StudentService } from '../student.service';
 import { Courses } from '../Courses';
 
 @Component({
-  selector: 'app-student-detail',
-  templateUrl: './student-detail.component.html',
-  styleUrls: ['./student-detail.component.css']
+  selector: 'app-course-detail',
+  templateUrl: './course-detail.component.html',
+  styleUrls: ['./course-detail.component.css']
 })
 
 
 
-export class StudentDetailComponent implements OnInit {
+export class CourseDetailComponent implements OnInit {
 
-  @Input() student?: Student;
+  @Input() course?: Courses;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,12 +23,13 @@ export class StudentDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getStudent();
+    //this.getCourses();
   }
 
-  getStudent(): void {
+  // get courses student is enrolled in
+  /*getCourses(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.studentService.getStudent(id).subscribe(student => this.student = student);
+    this.studentService.getCourses(id).subscribe(course => this.course = course);
   }
 
   goBack(): void {
@@ -37,9 +37,9 @@ export class StudentDetailComponent implements OnInit {
   }
 
   save(): void {
-    if (this.student) {
-      this.studentService.updateStudent(this.student).subscribe(() => this.goBack());
+    if (this.course) {
+      this.studentService.updateCourse(this.course).subscribe(() => this.goBack());
     }
-  }
+  }*/
 
 }

@@ -1,0 +1,9 @@
+<div>
+    <h2 class="text-slate-100">List Of All Courses:</h2>
+    <ul class="text-slate-400 marker:text-slate-100">
+        <li *ngFor="let coursenames of courseNameArray">
+            <a class="hover:text-slate-100 hover:text-lg">{{coursenames.name}} ID={{coursenames.id}}
+            </a>
+        </li>
+    </ul>
+</div>

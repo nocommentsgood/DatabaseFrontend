@@ -10,6 +10,8 @@ import { MessagesComponent } from './messages/messages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { StudentSearchComponent } from './student-search/student-search.component';
+import { CoursesComponent } from './courses/courses.component';
+import { CourseDetailComponent } from './course-detail/course-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { StudentSearchComponent } from './student-search/student-search.componen
     StudentDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    StudentSearchComponent
+    StudentSearchComponent,
+    CoursesComponent,
+    CourseDetailComponent
   ],
   imports: [
     BrowserModule,

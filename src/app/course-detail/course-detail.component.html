@@ -1,0 +1,27 @@
+<button type="button" class="shadow-sm bg-blue-400 text-slate-100 rounded-full border-2 border-black hover:bg-slate-500 p-1 m-2">Go Back</button>
+<div *ngIf="course">
+    <h2 class="text-slate-100 text-lg">Details Of Student: {{course.courseID}}</h2>
+    <div class="pt-2 text-slate-100"><span>ID: </span>{{course.courseID}}</div>
+    
+    <!--
+    <div class="pt-2">
+        <label class="text-slate-100" for="course-name">Course name: </label>
+        <input class="bg-blue-300/95 border-2 rounded ml-2 focus:rounded-sm" id="course-name" [(ngModel)]="course.courseName" placeholder="name">
+    </div>
+    <div class="pt-2">
+        <label class="text-slate-100" for="course-name">Course lastname: </label>
+        <input class="bg-blue-300/95 border-2 rounded ml-2 focus:rounded-sm" id="course-lastname" [(ngModel)]="course.courseName" placeholder="name">
+    </div>
+
+    -->
+
+    <div class="pt-2">
+        <label class="text-slate-100" for="course-id">Course ID: </label>
+        <input class="bg-blue-300/95 border-2 rounded ml-2 focus:rounded-sm" id="student-year" [(ngModel)]="course.courseID" placeholder="0">
+    </div>
+    <div class="pt-2">
+        <label class="text-slate-100" for="balance">Course Cost: </label>
+        <input class="bg-blue-300/95 border-2 rounded ml-2 focus:rounded-sm" id="balance" [(ngModel)]="course.courseName" placeholder="0">
+    </div>
+    <button type="button" class="shadow-sm bg-blue-400 text-slate-100 rounded-full border-2 border-black p-1 mt-2 hover:bg-yellow-500" >Update</button>
+</div>
